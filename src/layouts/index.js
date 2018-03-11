@@ -1,35 +1,54 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import graphql from 'graphql';
 import Helmet from 'react-helmet';
 
-import Header from '../components/Header';
-import './index.css';
+import Sidebar from '../components/Sidebar';
+import './index.scss';
 
-const TemplateWrapper = ({ children }) => (
-  <div>
-    <Helmet
-      title="Falter"
-      meta={[
-        { name: 'description', content: 'Tagfalter Deutschlands' },
-        { name: 'keywords', content: 'falter, schmetterlinge, tagfalter' },
-      ]}
-    />
-    <Header />
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '0px 1.0875rem 1.45rem',
-        paddingTop: 0,
-      }}
-    >
-      {children()}
+const TemplateWrapper = ({ children, data, location }) => {
+  console.log(location);
+  const { edges } = data.allMarkdownRemark;
+  return (
+    <div>
+      <Helmet
+        title="Falter"
+        meta={[
+          { name: 'description', content: 'Tagfalter Deutschlands' },
+          { name: 'keywords', content: 'falter, schmetterlinge, tagfalter' },
+        ]}
+      />
+      <div
+        style={{
+          margin: '0 auto',
+          maxWidth: 1200,
+          paddingTop: 0,
+          display: 'grid',
+          'grid-template-columns': '300px 1fr',
+        }}
+      >
+        <Sidebar falters={edges.map(edge => edge.node.frontmatter)} />
+        <div style={{ padding: '2rem 5rem' }}>{children()}</div>
+      </div>
     </div>
-  </div>
-);
-
-TemplateWrapper.propTypes = {
-  children: PropTypes.func,
+  );
 };
 
 export default TemplateWrapper;
+
+export const pageQuery = graphql`
+  query Families {
+    allMarkdownRemark(
+      limit: 2000
+      sort: { fields: [frontmatter___family], order: ASC }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            family
+            familyName
+          }
+        }
+      }
+    }
+  }
+`;

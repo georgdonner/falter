@@ -1,9 +1,6 @@
-
-
 import React from 'react';
 import graphql from 'graphql';
-
-// Components
+import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
 
 const Family = ({ data }) => {
@@ -13,6 +10,7 @@ const Family = ({ data }) => {
 
   return (
     <div>
+      <Helmet title={`Falter - ${familyName}`} />
       <h1>{familyHeader}</h1>
       <ul>
         {edges.map(({ node }) => {

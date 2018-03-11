@@ -1,0 +1,40 @@
+#sidebar-wrapper {
+  position: fixed;
+  width: 300px;
+  height: 100vh;
+  background: #f9f9f9;
+}
+
+#sidebar {
+  padding: 2rem 3rem;
+  font-family: 'Nunito', sans-serif;
+
+  h1 {
+    padding-bottom: .5rem;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      font-size: 1.5rem;
+      padding: 1rem 0;
+      border-bottom: 1px #e2e2e2 solid;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      
+      &:hover {
+        color: #ff5252;
+        cursor: pointer;
+      }
+    }
+  }
+}

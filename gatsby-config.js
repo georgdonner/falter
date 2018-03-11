@@ -3,6 +3,16 @@ module.exports = {
     title: 'Falter',
   },
   plugins: [
+    'gatsby-plugin-sass',
+    {
+      resolve: 'gatsby-plugin-google-fonts',
+      options: {
+        fonts: [
+          'nunito:400,700',
+          'mina:400,700',
+        ],
+      },
+    },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-catch-links',
     {
