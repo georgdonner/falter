@@ -2,7 +2,8 @@
 path: "/edelfalter/admiral"
 name: Admiral
 nameLatin: Vanessa atalanta
-family: Edelfalter
+family: edelfalter
+familyName: Edelfalter
 familyLatin: Nymphalidae
 images:
   - { src: './admiral.jpg', gender: 'f', location: "Brandenburg, Heinrichsfelde", author: Georg, date: "2016-07-01" }

@@ -4,6 +4,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators;
 
   const falterTemplate = path.resolve('src/templates/falter.js');
+  const familyTemplate = path.resolve('src/templates/family.js');
 
   return graphql(`{
     allMarkdownRemark(
@@ -16,6 +17,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           frontmatter {
             path
             name
+            family
           }
         }
       }
@@ -23,17 +25,28 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
   }`)
     .then((result) => {
       if (result.errors) {
-        return Promise.reject(result.errors);
-      }
-
-      return result.data.allMarkdownRemark.edges
-        .forEach(({ node }) => {
+        Promise.reject(result.errors);
+      } else {
+        const falter = result.data.allMarkdownRemark.edges;
+        // create falter pages
+        falter.forEach(({ node }) => {
           createPage({
             path: node.frontmatter.path,
             component: falterTemplate,
-            context: {}, // additional data can be passed via context
+            context: {},
           });
         });
+
+        // create page for each family
+        const families = new Set(falter.map(edge => edge.node.frontmatter.family));
+        families.forEach((family) => {
+          createPage({
+            path: `/${family}/`,
+            component: familyTemplate,
+            context: {},
+          });
+        });
+      }
     });
 };
 
