@@ -5,11 +5,15 @@
   "author": "Georg Donner",
   "dependencies": {
     "gatsby": "^1.9.223",
+    "gatsby-image": "^1.0.41",
     "gatsby-link": "^1.6.38",
     "gatsby-plugin-catch-links": "^1.0.19",
     "gatsby-plugin-react-helmet": "^2.0.6",
+    "gatsby-plugin-sharp": "^1.6.41",
+    "gatsby-remark-images": "^1.5.56",
     "gatsby-source-filesystem": "^1.5.27",
     "gatsby-transformer-remark": "^1.7.36",
+    "gatsby-transformer-sharp": "^1.6.22",
     "react-helmet": "^5.2.0"
   },
   "keywords": [
