@@ -8,8 +8,7 @@ module.exports = {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
         fonts: [
-          'nunito:400,700',
-          'mina:400,700',
+          'nunito:400,400i,700',
         ],
       },
     },

@@ -1,0 +1,40 @@
+#title {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+#subtitle {
+  margin-top: .75rem;
+  margin-bottom: 1.75rem;
+  color: #555;
+  text-align: center;
+  font-weight: 400;
+  font-style: italic;
+}
+
+#image-container {
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+
+.image-caption {
+  padding: 1rem 50px;
+  color: #555;
+}
+
+#description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}

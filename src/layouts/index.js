@@ -27,7 +27,7 @@ const TemplateWrapper = ({ children, data, location }) => {
         }}
       >
         <Sidebar falters={edges.map(edge => edge.node.frontmatter)} />
-        <div style={{ padding: '2rem 5rem' }}>{children()}</div>
+        <div style={{ padding: '2rem 7rem' }}>{children()}</div>
       </div>
     </div>
   );

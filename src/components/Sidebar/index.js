@@ -23,7 +23,6 @@ const Sidebar = (props) => {
                 <Link to={link.path}>{link.title}</Link>
               </li>
             ))}
-            <li>Test</li>
           </ul>
         </div>
       </div>

@@ -4,6 +4,9 @@
   "version": "1.0.0",
   "author": "Georg Donner",
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.4",
+    "@fortawesome/fontawesome-free-solid": "^5.0.8",
+    "@fortawesome/react-fontawesome": "^0.0.17",
     "gatsby": "^1.9.223",
     "gatsby-image": "^1.0.41",
     "gatsby-link": "^1.6.38",
@@ -16,6 +19,7 @@
     "gatsby-source-filesystem": "^1.5.27",
     "gatsby-transformer-remark": "^1.7.36",
     "gatsby-transformer-sharp": "^1.6.22",
+    "nuka-carousel": "^3.1.0",
     "react-helmet": "^5.2.0"
   },
   "keywords": [
