@@ -43,7 +43,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           createPage({
             path: `/${family}/`,
             component: familyTemplate,
-            context: {},
+            context: { family },
           });
         });
       }

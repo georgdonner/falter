@@ -29,7 +29,7 @@ const Family = ({ data }) => {
 export default Family;
 
 export const pageQuery = graphql`
-  query FamilyPage($family: String) {
+  query FamilyPage($family: String!) {
     allMarkdownRemark(
       limit: 2000
       sort: { fields: [frontmatter___name], order: DESC }
