@@ -30,9 +30,13 @@
         text-decoration: none;
         color: inherit;
       }
-      
+
+      &.active {
+        color: #e84b4b;
+      }
+
       &:hover {
-        color: #ff5252;
+        color: #e84b4b;
         cursor: pointer;
       }
     }

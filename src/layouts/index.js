@@ -6,7 +6,6 @@ import Sidebar from '../components/Sidebar';
 import './index.scss';
 
 const TemplateWrapper = ({ children, data, location }) => {
-  console.log(location);
   const { edges } = data.allMarkdownRemark;
   return (
     <div>
@@ -26,7 +25,7 @@ const TemplateWrapper = ({ children, data, location }) => {
           'grid-template-columns': '300px 1fr',
         }}
       >
-        <Sidebar falters={edges.map(edge => edge.node.frontmatter)} />
+        <Sidebar falters={edges.map(edge => edge.node.frontmatter)} path={location.pathname} />
         <div style={{ padding: '2rem 7rem' }}>{children()}</div>
       </div>
     </div>
@@ -39,7 +38,6 @@ export const pageQuery = graphql`
   query Families {
     allMarkdownRemark(
       limit: 2000
-      sort: { fields: [frontmatter___family], order: ASC }
     ) {
       edges {
         node {
