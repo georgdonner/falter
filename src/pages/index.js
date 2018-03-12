@@ -5,7 +5,8 @@ import './index.scss';
 
 const IndexPage = () => (
   <main id="main">
-    <h1>Tagfalter Deutschlands</h1>
+    <h1 id="index-topbar">Falter</h1>
+    <h1 id="index-title">Eine Sammlung der Tagfalter Deutschlands</h1>
     <img src={HeroImage} alt="Tagfalter" />
     <p>Willkommen auf der Tagfalter-Galerie der zwei Donner-Fotografen!</p>
     <p>
