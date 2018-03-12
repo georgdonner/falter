@@ -1,6 +1,44 @@
+#falter-topbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: 0;
+  padding: 1.25rem 3rem;
+  font-size: 1.25rem;
+  text-align: center;
+  background: #fff;
+  z-index: 2;
+
+  
+  a {
+    text-decoration: none;
+    font-weight: 700;
+    color: #666;
+
+    &:hover {
+      color: #e84b4b;
+    }
+
+    .fa-angle-left {
+      margin-right: .75rem;
+    }
+  }
+
+  
+  @media screen and (min-width: 1050px) {
+    display: none;
+  }
+}
+
 #title {
   margin-bottom: 0;
   text-align: center;
+
+  @media screen and (max-width: 1050px) {
+    margin-top: 3rem;
+    font-size: 1.75rem;
+  }
 }
 
 #subtitle {
@@ -10,17 +48,31 @@
   text-align: center;
   font-weight: 400;
   font-style: italic;
+
+  @media screen and (max-width: 1050px) {
+    margin-top: 0.2rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
 }
 
 #image-container {
   display: grid;
   grid-template-columns: 50px 1fr 50px;
 
+  @media screen and (max-width: 1050px) {
+    grid-template-columns: 25px 1fr 25px;
+  }
+
   .icon {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2rem;
+
+    @media screen and (max-width: 1050px) {
+      font-size: 1.5rem;
+    }
     
     &:hover {
       cursor: pointer;
@@ -28,13 +80,22 @@
   }
 }
 
-
 .image-caption {
   padding: 1rem 50px;
-  color: #555;
+  color: #666;
+
+  @media screen and (max-width: 1050px) {
+    padding: .5rem 25px;
+    font-size: .75rem;
+  }
 }
 
 #description {
   font-size: 1.2rem;
   line-height: 1.6;
+
+  @media screen and (max-width: 1050px) {
+    padding: 0 .5rem;
+    font-size: .9rem;
+  }
 }

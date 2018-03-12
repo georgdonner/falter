@@ -11,9 +11,57 @@ body {
   height: 100%;
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 1200px) {
   html {
       margin-left: calc(100vw - 100%);
       margin-right: 0;
+  }
+}
+
+#root {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding-top: 0;
+
+  @media screen and (min-width: 1050px) {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+  }
+}
+
+#main-wrapper {
+  padding: 1rem;
+
+  @media screen and (min-width: 1050px) {
+    padding: 2rem 7rem;
+  }
+}
+
+#sidebar-wrapper-outer {
+  @media screen and (max-width: 1050px) {
+    position: absolute;
+    z-index: 8;
+
+    &.active {
+      #sidebar-wrapper-inner {
+        left: 0;
+      }
+    }
+  }
+}
+
+#sidebar-toggle {
+  position: fixed;
+  z-index: 10;
+  top: 1.15rem;
+  left: 1.5rem;
+  font-size: 1.5rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media screen and (min-width: 1050px) {
+    display: none;
   }
 }

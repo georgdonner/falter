@@ -1,16 +1,32 @@
-#sidebar-wrapper {
+#sidebar-wrapper-inner {
   position: fixed;
   width: 300px;
   height: 100vh;
   background: #f9f9f9;
+
+  @media screen and (max-width: 1050px) {
+    transition: left .33s ease;
+    left: -300px;
+  }
 }
 
 #sidebar {
   padding: 2rem 3rem;
   font-family: 'Nunito', sans-serif;
 
+  @media screen and (max-width: 1050px) {
+    padding: 0 2.5rem;
+    text-align: center;
+  }
+
   h1 {
-    margin-bottom: 2rem; 
+    margin-bottom: 2rem;
+    
+    @media screen and (max-width: 1050px) {
+      font-size: 1.75rem;
+      margin: 1rem 0;
+
+    }
   }
 
   ul {

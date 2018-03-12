@@ -14,7 +14,7 @@ const Sidebar = (props) => {
   });
   return (
     <div>
-      <div id="sidebar-wrapper">
+      <div id="sidebar-wrapper-inner">
         <div id="sidebar">
           <h1>Familien</h1>
           <ul>

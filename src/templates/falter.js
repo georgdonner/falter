@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import graphql from 'graphql';
 import Helmet from 'react-helmet';
 import Img from 'gatsby-image';
+import Link from 'gatsby-link';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faAngleLeft from '@fortawesome/fontawesome-free-solid/faAngleLeft';
 import faAngleRight from '@fortawesome/fontawesome-free-solid/faAngleRight';
@@ -17,7 +18,9 @@ export default class Template extends Component {
 
   render() {
     const falter = this.props.data.markdownRemark;
-    const { images, name, nameLatin } = falter.frontmatter;
+    const {
+      family, familyName, images, name, nameLatin,
+    } = falter.frontmatter;
     const getCaption = ({
       location, date, author, gender,
     }) => {
@@ -27,7 +30,7 @@ export default class Template extends Component {
       return (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div><span style={{ color: '#333', paddingRight: 10 }}>{genderSymbol}</span>{location}</div>
-          <div>{date}<i> (Foto: {author})</i></div>
+          <div style={{ textAlign: 'right' }}>{date}<i> (Foto: {author})</i></div>
         </div>
       );
     };
@@ -35,6 +38,9 @@ export default class Template extends Component {
       <div>
         <Helmet title={`Falter - ${name}`} />
         <div>
+          <div id="falter-topbar">
+            <Link to={`/${family}`}><FontAwesomeIcon icon={faAngleLeft} />{familyName}</Link>
+          </div>
           <h1 id="title">{name}</h1>
           <h2 id="subtitle">{nameLatin}</h2>
           <div id="image-container">
@@ -62,6 +68,8 @@ export const falterQuery = graphql`
         path
         name
         nameLatin
+        family
+        familyName
         images {
           src {
             childImageSharp {
