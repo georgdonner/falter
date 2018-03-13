@@ -3,9 +3,13 @@ import graphql from 'graphql';
 import Helmet from 'react-helmet';
 import Img from 'gatsby-image';
 import Link from 'gatsby-link';
+import ImageGallery from 'react-image-gallery';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faAngleLeft from '@fortawesome/fontawesome-free-solid/faAngleLeft';
 import faAngleRight from '@fortawesome/fontawesome-free-solid/faAngleRight';
+import faExpand from '@fortawesome/fontawesome-free-solid/faExpand';
+import faCompress from '@fortawesome/fontawesome-free-solid/faCompress';
+import 'react-image-gallery/styles/css/image-gallery.css';
 import './falter.scss';
 
 export default class Template extends Component {
@@ -14,6 +18,7 @@ export default class Template extends Component {
     this.state = {
       currentImg: 0,
     };
+    this.gallery = null;
   }
 
   render() {
@@ -21,6 +26,14 @@ export default class Template extends Component {
     const {
       family, familyName, images, name, nameLatin,
     } = falter.frontmatter;
+    const galleryImages = images.map((image) => {
+      const { src, srcSet, sizes } = image.src.childImageSharp.sizes;
+      return {
+        original: src,
+        srcSet,
+        sizes,
+      };
+    });
     const getCaption = ({
       location, date, author, gender,
     }) => {
@@ -34,23 +47,56 @@ export default class Template extends Component {
         </div>
       );
     };
+
+    const renderFullscreenButton = (onClick, isFullscreen) => (
+      <div id="fullscreen-button" className="gallery-button">
+        <FontAwesomeIcon
+          icon={isFullscreen ? faCompress : faExpand}
+          onClick={onClick}
+        />
+      </div>
+    );
+
+    const renderLeftNav = (onClick, disabled) => (
+      <div className="gallery-button gallery-nav left" style={{ display: disabled ? 'none' : 'flex' }}>
+        <FontAwesomeIcon
+          icon={faAngleLeft}
+          onClick={onClick}
+        />
+      </div>
+    );
+
+    const renderRightNav = (onClick, disabled) => (
+      <div className="gallery-button gallery-nav right" style={{ display: disabled ? 'none' : 'flex' }}>
+        <FontAwesomeIcon
+          icon={faAngleRight}
+          onClick={onClick}
+        />
+      </div>
+    );
+
     return (
       <div>
         <Helmet title={`Falter - ${name}`} />
-        <div>
+        <div id="falter">
           <div id="falter-topbar">
             <Link to={`/${family}`}><FontAwesomeIcon icon={faAngleLeft} />{familyName}</Link>
           </div>
           <h1 id="title">{name}</h1>
           <h2 id="subtitle">{nameLatin}</h2>
           <div id="image-container">
-            <div className="icon" onClick={() => this.setState({ currentImg: Math.max(this.state.currentImg - 1, 0) })}>
-              {this.state.currentImg > 0 ? <FontAwesomeIcon icon={faAngleLeft} /> : null}
-            </div>
-            <Img sizes={images[this.state.currentImg].src.childImageSharp.sizes} imgStyle={{ borderRadius: '5px' }} fadeIn />
-            <div className="icon" onClick={() => this.setState({ currentImg: Math.min(this.state.currentImg + 1, images.length - 1) })}>
-              {this.state.currentImg < images.length - 1 ? <FontAwesomeIcon icon={faAngleRight} /> : null}
-            </div>
+            <ImageGallery
+              ref={(gallery) => { this.gallery = gallery; }}
+              items={galleryImages}
+              infinite={false}
+              showThumbnails={false}
+              showPlayButton={false}
+              useBrowserFullscreen={false}
+              onSlide={currentImg => this.setState({ currentImg })}
+              renderLeftNav={renderLeftNav}
+              renderRightNav={renderRightNav}
+              renderFullscreenButton={renderFullscreenButton}
+            />
           </div>
           <div className="image-caption">{getCaption(images[this.state.currentImg])}</div>
           <div id="description" className="body-text" dangerouslySetInnerHTML={{ __html: falter.html }} />
@@ -73,7 +119,7 @@ export const falterQuery = graphql`
         images {
           src {
             childImageSharp {
-              sizes(maxWidth: 1240 ) {
+              sizes {
                 ...GatsbyImageSharpSizes
               }
             }
