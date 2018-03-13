@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import graphql from 'graphql';
 import Helmet from 'react-helmet';
-import Img from 'gatsby-image';
 import Link from 'gatsby-link';
 import ImageGallery from 'react-image-gallery';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
@@ -9,7 +8,6 @@ import faAngleLeft from '@fortawesome/fontawesome-free-solid/faAngleLeft';
 import faAngleRight from '@fortawesome/fontawesome-free-solid/faAngleRight';
 import faExpand from '@fortawesome/fontawesome-free-solid/faExpand';
 import faCompress from '@fortawesome/fontawesome-free-solid/faCompress';
-import 'react-image-gallery/styles/css/image-gallery.css';
 import './falter.scss';
 
 export default class Template extends Component {
