@@ -117,7 +117,7 @@ export const falterQuery = graphql`
         images {
           src {
             childImageSharp {
-              sizes {
+              sizes(maxWidth: 4000) {
                 ...GatsbyImageSharpSizes
               }
             }
