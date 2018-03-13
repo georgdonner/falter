@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import graphql from 'graphql';
 import Helmet from 'react-helmet';
+import Swipeable from 'react-swipeable';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faBars from '@fortawesome/fontawesome-free-solid/faBars';
 
@@ -38,9 +39,17 @@ export default class TemplateWrapper extends Component {
         />
         <div id="root">
           <div id="sidebar-wrapper-outer" className={this.state.sidebar ? 'active' : ''}>
-            <Sidebar falters={edges.map(edge => edge.node.frontmatter)} path={location.pathname} />
+            <Swipeable
+              onSwipedLeft={() => { if (this.state.sidebar) this.setState({ sidebar: false }); }}
+            >
+              <Sidebar
+                falters={edges.map(edge => edge.node.frontmatter)}
+                path={location.pathname}
+              />
+            </Swipeable>
           </div>
-          <div id="main-wrapper">
+          {/* eslint-disable-next-line */}
+          <div id="main-wrapper" onClick={() => { if (this.state.sidebar) this.setState({ sidebar: false }); }}>
             <div
               role="menu"
               tabIndex="0"
