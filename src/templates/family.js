@@ -3,6 +3,8 @@ import graphql from 'graphql';
 import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
 import Img from 'gatsby-image';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faArrowRight from '@fortawesome/fontawesome-free-solid/faArrowRight';
 import './family.scss';
 
 const Family = ({ data }) => {
@@ -21,9 +23,12 @@ const Family = ({ data }) => {
           return (
             <div key={path} className="falter-card">
               <Link to={path}>
-                <Img sizes={images[0].src.childImageSharp.sizes} imgStyle={{ borderRadius: '5px 5px 0 0' }} />
+                <Img sizes={images[0].src.childImageSharp.sizes} imgStyle={{ borderRadius: '2px 2px 0 0' }} />
                 <h2>{name}</h2>
-                <h3><i>{nameLatin}</i></h3>
+                <h3>
+                  <i>{nameLatin}</i>
+                  <span className="icon-right"><FontAwesomeIcon icon={faArrowRight} /></span>
+                </h3>
               </Link>
             </div>
           );
