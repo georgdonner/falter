@@ -5,6 +5,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faBars from '@fortawesome/fontawesome-free-solid/faBars';
 
 import Sidebar from '../components/Sidebar';
+import '../global.scss';
 import './index.scss';
 
 export default class TemplateWrapper extends Component {
@@ -17,6 +18,10 @@ export default class TemplateWrapper extends Component {
     if (this.props.location.pathname !== nextProps.location.pathname) {
       this.setState({ sidebar: false });
     }
+  }
+
+  setSidebar(sidebar = true) {
+    this.setState({ sidebar });
   }
 
   render() {
@@ -39,7 +44,7 @@ export default class TemplateWrapper extends Component {
             <div id="sidebar-toggle" onClick={() => this.setState({ sidebar: !this.state.sidebar })}>
               <FontAwesomeIcon icon={faBars} />
             </div>
-            {children()}
+            {children({ ...this.props, setSidebar: sidebar => this.setSidebar(sidebar) })}
           </div>
         </div>
       </div>

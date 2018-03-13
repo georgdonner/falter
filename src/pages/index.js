@@ -3,7 +3,7 @@ import Github from '../images/github.png';
 import HeroImage from '../images/schwalbenschwanz.jpg';
 import './index.scss';
 
-const IndexPage = () => (
+const IndexPage = props => (
   <main id="main">
     <h1 id="index-topbar">Falter</h1>
     <h1 id="index-title">Eine Sammlung der Tagfalter Deutschlands</h1>
@@ -16,6 +16,9 @@ const IndexPage = () => (
       Tagfalter entdecken, die sich auch für uns mit jedem Ausflug erweitert.
     </p>
     <p>Also viel Spaß mit den Fotos! <span role="img" aria-label="Smile">🙂</span></p>
+    <div id="bottom-cta">
+      <button className="primary-button" onClick={() => props.setSidebar()}>Zu den Familien</button>
+    </div>
     <footer>
       <a id="github-link" href="https://github.com/georgdonner/falter" target="_blank" rel="noopener noreferrer" >
         <span>Zum Code auf </span>

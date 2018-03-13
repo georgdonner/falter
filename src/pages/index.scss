@@ -57,6 +57,18 @@
   }
 }
 
+#bottom-cta {
+  margin: 0;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+
+  
+  @media screen and (min-width: 1050px) {
+    display: none;
+  }
+}
+
 #github-link {
   display: flex;
   justify-content: center;
