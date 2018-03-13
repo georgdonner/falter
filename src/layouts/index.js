@@ -41,7 +41,15 @@ export default class TemplateWrapper extends Component {
             <Sidebar falters={edges.map(edge => edge.node.frontmatter)} path={location.pathname} />
           </div>
           <div id="main-wrapper">
-            <div id="sidebar-toggle" onClick={() => this.setState({ sidebar: !this.state.sidebar })}>
+            <div
+              role="menu"
+              tabIndex="0"
+              id="sidebar-toggle"
+              onClick={() => this.setState({ sidebar: !this.state.sidebar })}
+              onKeyPress={(event) => {
+                if (event.key.toLowerCase() === 'enter') this.setState({ sidebar: !this.state.sidebar });
+              }}
+            >
               <FontAwesomeIcon icon={faBars} />
             </div>
             {children({ ...this.props, setSidebar: sidebar => this.setSidebar(sidebar) })}

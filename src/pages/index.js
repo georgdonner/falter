@@ -8,14 +8,16 @@ const IndexPage = props => (
     <h1 id="index-topbar">Falter</h1>
     <h1 id="index-title">Eine Sammlung der Tagfalter Deutschlands</h1>
     <img src={HeroImage} alt="Tagfalter" />
-    <p>Willkommen auf der Tagfalter-Galerie der zwei Donner-Fotografen!</p>
-    <p>
-      Wir beide (Karsten und Georg) jagen seit Mai 2016 gemeinsam den örtlichen Schmetterlingem
-      hinterher, natürlich vor allem in Berlin und Brandenburg, aber wir haben auch an anderen Orten
-      bereits Fotos geschossen. In unserer Sammlung kannst du die überraschende Vielfalt der
-      Tagfalter entdecken, die sich auch für uns mit jedem Ausflug erweitert.
-    </p>
-    <p>Also viel Spaß mit den Fotos! <span role="img" aria-label="Smile">🙂</span></p>
+    <div className="body-text">
+      <p>Willkommen auf der Tagfalter-Galerie der zwei Donner-Fotografen!</p>
+      <p>
+        Wir beide (Karsten und Georg) jagen seit Mai 2016 gemeinsam den örtlichen Schmetterlingem
+        hinterher, natürlich vor allem in Berlin und Brandenburg, aber wir haben auch an anderen
+        Orten bereits Fotos geschossen. In unserer Sammlung kannst du die überraschende Vielfalt der
+        Tagfalter entdecken, die sich auch für uns mit jedem Ausflug erweitert.
+      </p>
+      <p>Also viel Spaß mit den Fotos! <span role="img" aria-label="Smile">🙂</span></p>
+    </div>
     <div id="bottom-cta">
       <button className="primary-button" onClick={() => props.setSidebar()}>Zu den Familien</button>
     </div>

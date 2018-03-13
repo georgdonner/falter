@@ -53,7 +53,7 @@ export default class Template extends Component {
             </div>
           </div>
           <div className="image-caption">{getCaption(images[this.state.currentImg])}</div>
-          <div id="description" dangerouslySetInnerHTML={{ __html: falter.html }} />
+          <div id="description" className="body-text" dangerouslySetInnerHTML={{ __html: falter.html }} />
         </div>
       </div>
     );
