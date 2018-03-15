@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import graphql from 'graphql';
 import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
@@ -12,7 +12,7 @@ const Family = ({ data }) => {
   const { familyName } = edges[0].node.frontmatter;
 
   return (
-    <div>
+    <Fragment>
       <Helmet title={`Falter - ${familyName}`} />
       <h1 id="family-title">{familyName}</h1>
       <div id="family-container">
@@ -34,7 +34,7 @@ const Family = ({ data }) => {
           );
         })}
       </div>
-    </div>
+    </Fragment>
   );
 };
 

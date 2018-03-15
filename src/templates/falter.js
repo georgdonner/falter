@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import graphql from 'graphql';
 import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
@@ -74,7 +74,7 @@ export default class Template extends Component {
     );
 
     return (
-      <div>
+      <Fragment>
         <Helmet title={`Falter - ${name}`} />
         <div id="falter">
           <div id="falter-topbar">
@@ -99,7 +99,7 @@ export default class Template extends Component {
           <div className="image-caption">{getCaption(images[this.state.currentImg])}</div>
           <div id="description" className="body-text" dangerouslySetInnerHTML={{ __html: falter.html }} />
         </div>
-      </div>
+      </Fragment>
     );
   }
 }

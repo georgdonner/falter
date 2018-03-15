@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import graphql from 'graphql';
 import Helmet from 'react-helmet';
 import Swipeable from 'react-swipeable';
@@ -29,7 +29,7 @@ export default class TemplateWrapper extends Component {
     const { children, data, location } = this.props;
     const { edges } = data.allMarkdownRemark;
     return (
-      <div>
+      <Fragment>
         <Helmet
           title="Falter"
           meta={[
@@ -64,7 +64,7 @@ export default class TemplateWrapper extends Component {
             {children({ ...this.props, setSidebar: sidebar => this.setSidebar(sidebar) })}
           </div>
         </div>
-      </div>
+      </Fragment>
     );
   }
 }
