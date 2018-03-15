@@ -74,6 +74,7 @@ export const pageQuery = graphql`
   query Families {
     allMarkdownRemark(
       limit: 2000
+      sort: { fields: [frontmatter___family], order: ASC }
     ) {
       edges {
         node {
