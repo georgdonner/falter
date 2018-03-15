@@ -24,7 +24,6 @@ export default class Template extends Component {
     const {
       family, familyName, images, name, nameLatin,
     } = falter.frontmatter;
-    console.log(images);
     const galleryImages = images.map((image) => {
       const { src, srcSet, sizes } = image.src.childImageSharp.sizes;
       return {
@@ -36,12 +35,15 @@ export default class Template extends Component {
     const getCaption = ({
       location, date, author, gender,
     }) => {
-      let genderSymbol = '?';
+      let genderSymbol = '';
       if (gender === 'm') genderSymbol = '♂';
       if (gender === 'f') genderSymbol = '♀';
       return (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div><span style={{ color: '#333', paddingRight: 10 }}>{genderSymbol}</span>{location}</div>
+          <div>
+            {genderSymbol ? <span style={{ color: '#333', paddingRight: 10 }}>{genderSymbol}</span> : null}
+            {location}
+          </div>
           <div style={{ textAlign: 'right' }}>{date}<i> (Foto: {author})</i></div>
         </div>
       );
