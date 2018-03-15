@@ -176,3 +176,14 @@
     font-size: .75rem;
   }
 }
+
+#description {
+  a {
+    color: #e84b4b;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
