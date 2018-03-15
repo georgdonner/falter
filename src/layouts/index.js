@@ -58,6 +58,7 @@ export default class TemplateWrapper extends Component {
               onKeyPress={(event) => {
                 if (event.key.toLowerCase() === 'enter') this.setState({ sidebar: !this.state.sidebar });
               }}
+              onMouseDown={(e) => { e.preventDefault(); }}
             >
               <FontAwesomeIcon icon={faBars} />
             </div>

@@ -24,6 +24,7 @@ export default class Template extends Component {
     const {
       family, familyName, images, name, nameLatin,
     } = falter.frontmatter;
+    console.log(images);
     const galleryImages = images.map((image) => {
       const { src, srcSet, sizes } = image.src.childImageSharp.sizes;
       return {
@@ -47,29 +48,46 @@ export default class Template extends Component {
     };
 
     const renderFullscreenButton = (onClick, isFullscreen) => (
-      <div id="fullscreen-button" className="gallery-button">
+      <div
+        id="fullscreen-button"
+        className="gallery-button"
+        role="button"
+        tabIndex="0"
+        onClick={onClick}
+        onKeyPress={onClick}
+        onMouseDown={(e) => { e.preventDefault(); }}
+      >
         <FontAwesomeIcon
           icon={isFullscreen ? faCompress : faExpand}
-          onClick={onClick}
         />
       </div>
     );
 
     const renderLeftNav = (onClick, disabled) => (
       <div className="gallery-button gallery-nav left" style={{ display: disabled ? 'none' : 'flex' }}>
-        <FontAwesomeIcon
-          icon={faAngleLeft}
+        <div
+          role="button"
           onClick={onClick}
-        />
+          tabIndex="0"
+          onKeyPress={onClick}
+          onMouseDown={(e) => { e.preventDefault(); }}
+        >
+          <FontAwesomeIcon icon={faAngleLeft} />
+        </div>
       </div>
     );
 
     const renderRightNav = (onClick, disabled) => (
       <div className="gallery-button gallery-nav right" style={{ display: disabled ? 'none' : 'flex' }}>
-        <FontAwesomeIcon
-          icon={faAngleRight}
+        <div
+          role="button"
           onClick={onClick}
-        />
+          tabIndex="0"
+          onKeyPress={onClick}
+          onMouseDown={(e) => { e.preventDefault(); }}
+        >
+          <FontAwesomeIcon icon={faAngleRight} />
+        </div>
       </div>
     );
 
