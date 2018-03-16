@@ -24,8 +24,7 @@ body {
   padding-top: 0;
 
   @media screen and (min-width: 1050px) {
-    display: grid;
-    grid-template-columns: 300px 1fr;
+    display: flex;
   }
 }
 
@@ -35,9 +34,14 @@ body {
   @media screen and (min-width: 1050px) {
     padding: 2rem 7rem;
   }
+
+  @media screen and (min-width: 1200px) {
+    width: 900px;
+  }
 }
 
 #sidebar-wrapper-outer {
+  min-width: 300px;
   @media screen and (max-width: 1050px) {
     position: absolute;
     z-index: 8;

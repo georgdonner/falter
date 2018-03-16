@@ -19,7 +19,7 @@ const Sidebar = (props) => {
           <h1>Familien</h1>
           <ul>
             {links.map(link => (
-              <li key={link.path} className={props.path.includes(link.path) ? 'active' : ''}>
+              <li key={link.path} className={props.path.indexOf(link.path) !== -1 ? 'active' : ''}>
                 <Link to={link.path}>{link.title}</Link>
               </li>
             ))}
