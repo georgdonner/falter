@@ -1,3 +1,5 @@
+@import './variables';
+
 .primary-button {
   padding: .5rem 1rem;
   border: none;
@@ -7,12 +9,12 @@
   font-size: .85rem;
   box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.05);
   color: #fff;
-  background: #e84b4b;
+  background: $primary-color;
   cursor: pointer;
   transition: background-color .33s ease;
 
   &:hover {
-    background: #d34545;
+    background: $primary-color-hover;
   }
 }
 

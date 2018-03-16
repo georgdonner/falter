@@ -1,12 +1,14 @@
+@import '../../variables';
+
 #sidebar-wrapper-inner {
   position: fixed;
-  width: 300px;
+  width: $sidebar-width;
   height: 100vh;
-  background: #f9f9f9;
+  background: $background-color-light;
 
   @media screen and (max-width: 1050px) {
     transition: left .33s ease;
-    left: -300px;
+    left: -$sidebar-width;
   }
 }
 
@@ -48,11 +50,11 @@
       }
 
       &.active {
-        color: #e84b4b;
+        color: $primary-color;
       }
 
       &:hover {
-        color: #e84b4b;
+        color: $primary-color;
         cursor: pointer;
       }
     }
