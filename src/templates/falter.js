@@ -26,8 +26,10 @@ export default class Template extends Component {
     } = falter.frontmatter;
     const galleryImages = images.map((image) => {
       const { src, srcSet, sizes } = image.src.childImageSharp.sizes;
+      const thumbnail = image.src.childImageSharp.resolutions.src;
       return {
         original: src,
+        thumbnail,
         srcSet,
         sizes,
       };
@@ -107,7 +109,7 @@ export default class Template extends Component {
               ref={(gallery) => { this.gallery = gallery; }}
               items={galleryImages}
               infinite={false}
-              showThumbnails={false}
+              disableThumbnailScroll
               showPlayButton={false}
               useBrowserFullscreen={false}
               onSlide={currentImg => this.setState({ currentImg })}
@@ -139,6 +141,9 @@ export const falterQuery = graphql`
             childImageSharp {
               sizes(maxWidth: 4000) {
                 ...GatsbyImageSharpSizes
+              }
+              resolutions(width: 200) {
+                ...GatsbyImageSharpResolutions
               }
             }
           }
