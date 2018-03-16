@@ -6,6 +6,7 @@ import ImageGallery from 'react-image-gallery';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faAngleLeft from '@fortawesome/fontawesome-free-solid/faAngleLeft';
 import faAngleRight from '@fortawesome/fontawesome-free-solid/faAngleRight';
+import faArrowLeft from '@fortawesome/fontawesome-free-solid/faArrowLeft';
 import faExpand from '@fortawesome/fontawesome-free-solid/faExpand';
 import faCompress from '@fortawesome/fontawesome-free-solid/faCompress';
 import './falter.scss';
@@ -99,6 +100,9 @@ export default class Template extends Component {
       <Fragment>
         <Helmet title={`Falter - ${name}`} />
         <div id="falter">
+          <Link to={`/${family}`} id="back-button-falter">
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </Link>
           <div id="falter-topbar">
             <Link to={`/${family}`}><FontAwesomeIcon icon={faAngleLeft} />{familyName}</Link>
           </div>

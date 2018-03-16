@@ -1,8 +1,28 @@
 @import "node_modules/react-image-gallery/styles/scss/image-gallery.scss";
 
 #falter {
+  position: relative;
+
   @media screen and (max-width: 1050px) {
     padding: 0 .5rem;
+  }
+}
+
+#back-button-falter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 2rem;
+  color: #e84b4b;
+  transition: color .33s ease;
+  cursor: pointer;
+
+  &:hover {
+    color: #d34545;
+  }
+
+  @media screen and (max-width: 1050px) {
+    display: none;
   }
 }
 
