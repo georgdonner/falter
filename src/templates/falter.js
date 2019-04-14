@@ -1,15 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import graphql from 'graphql';
 import Helmet from 'react-helmet';
-import Link from 'gatsby-link';
+import { graphql, Link } from 'gatsby';
 import ImageGallery from 'react-image-gallery';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faAngleLeft from '@fortawesome/fontawesome-free-solid/faAngleLeft';
-import faAngleRight from '@fortawesome/fontawesome-free-solid/faAngleRight';
-import faArrowLeft from '@fortawesome/fontawesome-free-solid/faArrowLeft';
-import faExpand from '@fortawesome/fontawesome-free-solid/faExpand';
-import faCompress from '@fortawesome/fontawesome-free-solid/faCompress';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faAngleLeft, faAngleRight, faArrowLeft, faExpand, faCompress,
+} from '@fortawesome/free-solid-svg-icons';
 import './falter.scss';
+import Layout from '../components/layout';
 
 export default class Template extends Component {
   constructor(props) {
@@ -47,7 +45,12 @@ export default class Template extends Component {
             {genderSymbol ? <span style={{ color: '#333', paddingRight: 10 }}>{genderSymbol}</span> : null}
             {location}
           </div>
-          <div style={{ textAlign: 'right' }}>{date}<i> (Foto: {author})</i></div>
+          <div style={{ textAlign: 'right' }}>
+            {date}
+            <i>
+              {` (Foto: ${author})`}
+            </i>
+          </div>
         </div>
       );
     };
@@ -97,35 +100,40 @@ export default class Template extends Component {
     );
 
     return (
-      <Fragment>
-        <Helmet title={`Falter - ${name}`} />
-        <div id="falter">
-          <Link to={`/${family}`} id="back-button-falter">
-            <FontAwesomeIcon icon={faArrowLeft} />
-          </Link>
-          <div id="falter-topbar">
-            <Link to={`/${family}`}><FontAwesomeIcon icon={faAngleLeft} />{familyName}</Link>
+      <Layout location={this.props.location}>
+        <Fragment>
+          <Helmet title={`Falter - ${name}`} />
+          <div id="falter">
+            <Link to={`/${family}`} id="back-button-falter">
+              <FontAwesomeIcon icon={faArrowLeft} />
+            </Link>
+            <div id="falter-topbar">
+              <Link to={`/${family}`}>
+                <FontAwesomeIcon icon={faAngleLeft} />
+                {familyName}
+              </Link>
+            </div>
+            <h1 id="title">{name}</h1>
+            <h2 id="subtitle">{nameLatin}</h2>
+            <div id="image-container">
+              <ImageGallery
+                ref={(gallery) => { this.gallery = gallery; }}
+                items={galleryImages}
+                infinite={false}
+                disableThumbnailScroll
+                showPlayButton={false}
+                useBrowserFullscreen={false}
+                onSlide={currentImg => this.setState({ currentImg })}
+                renderLeftNav={renderLeftNav}
+                renderRightNav={renderRightNav}
+                renderFullscreenButton={renderFullscreenButton}
+              />
+            </div>
+            <div className="image-caption">{getCaption(images[this.state.currentImg])}</div>
+            <div id="description" className="body-text" dangerouslySetInnerHTML={{ __html: falter.html }} />
           </div>
-          <h1 id="title">{name}</h1>
-          <h2 id="subtitle">{nameLatin}</h2>
-          <div id="image-container">
-            <ImageGallery
-              ref={(gallery) => { this.gallery = gallery; }}
-              items={galleryImages}
-              infinite={false}
-              disableThumbnailScroll
-              showPlayButton={false}
-              useBrowserFullscreen={false}
-              onSlide={currentImg => this.setState({ currentImg })}
-              renderLeftNav={renderLeftNav}
-              renderRightNav={renderRightNav}
-              renderFullscreenButton={renderFullscreenButton}
-            />
-          </div>
-          <div className="image-caption">{getCaption(images[this.state.currentImg])}</div>
-          <div id="description" className="body-text" dangerouslySetInnerHTML={{ __html: falter.html }} />
-        </div>
-      </Fragment>
+        </Fragment>
+      </Layout>
     );
   }
 }
