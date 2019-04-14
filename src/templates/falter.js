@@ -19,7 +19,9 @@ export default class Template extends Component {
   }
 
   render() {
-    const falter = this.props.data.markdownRemark;
+    const { data, location } = this.props;
+    const { currentImg } = this.state;
+    const falter = data.markdownRemark;
     const {
       family, familyName, images, name, nameLatin,
     } = falter.frontmatter;
@@ -33,9 +35,8 @@ export default class Template extends Component {
         sizes,
       };
     });
-    const getCaption = ({
-      location, date, author, gender,
-    }) => {
+    const getCaption = (imgData) => {
+      const { date, author, gender } = imgData;
       let genderSymbol = '';
       if (gender === 'm') genderSymbol = '♂';
       if (gender === 'f') genderSymbol = '♀';
@@ -43,7 +44,7 @@ export default class Template extends Component {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
             {genderSymbol ? <span style={{ color: '#333', paddingRight: 10 }}>{genderSymbol}</span> : null}
-            {location}
+            {imgData.location}
           </div>
           <div style={{ textAlign: 'right' }}>
             {date}
@@ -100,7 +101,7 @@ export default class Template extends Component {
     );
 
     return (
-      <Layout location={this.props.location}>
+      <Layout location={location}>
         <Fragment>
           <Helmet title={`Falter - ${name}`} />
           <div id="falter">
@@ -123,13 +124,13 @@ export default class Template extends Component {
                 disableThumbnailScroll
                 showPlayButton={false}
                 useBrowserFullscreen={false}
-                onSlide={currentImg => this.setState({ currentImg })}
+                onSlide={img => this.setState({ currentImg: img })}
                 renderLeftNav={renderLeftNav}
                 renderRightNav={renderRightNav}
                 renderFullscreenButton={renderFullscreenButton}
               />
             </div>
-            <div className="image-caption">{getCaption(images[this.state.currentImg])}</div>
+            <div className="image-caption">{getCaption(images[currentImg])}</div>
             <div id="description" className="body-text" dangerouslySetInnerHTML={{ __html: falter.html }} />
           </div>
         </Fragment>

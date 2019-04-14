@@ -3,9 +3,10 @@ import { Link } from 'gatsby';
 import './index.scss';
 
 const Sidebar = (props) => {
+  const { falters } = props;
   const saved = new Set();
   const links = [];
-  props.falters.forEach((falter) => {
+  falters.forEach((falter) => {
     const { family, familyName } = falter;
     if (!saved.has(family)) {
       saved.add(family);

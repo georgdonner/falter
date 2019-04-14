@@ -27,24 +27,28 @@ const pageQuery = graphql`
   }
 `;
 
+export const LayoutContext = React.createContext({
+  sidebar: false,
+  setSidebar: () => {},
+});
+
 export default class TemplateWrapper extends Component {
   constructor(props) {
     super(props);
     this.state = { sidebar: false };
+    this.setSidebar = (sidebar = true) => this.setState({ sidebar });
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.location.pathname !== nextProps.location.pathname) {
+    const { location } = this.props;
+    if (location.pathname !== nextProps.location.pathname) {
       this.setState({ sidebar: false });
     }
   }
 
-  setSidebar(sidebar = true) {
-    this.setState({ sidebar });
-  }
-
   render() {
     const { children, location } = this.props;
+    const { sidebar } = this.state;
     const pageContent = (data) => {
       const { edges } = data.allMarkdownRemark;
       return (
@@ -57,9 +61,11 @@ export default class TemplateWrapper extends Component {
             ]}
           />
           <div id="root">
-            <div id="sidebar-wrapper-outer" className={this.state.sidebar ? 'active' : ''}>
+            <div id="sidebar-wrapper-outer" className={sidebar ? 'active' : ''}>
               <Swipeable
-                onSwipedLeft={() => { if (this.state.sidebar) this.setState({ sidebar: false }); }}
+                onSwipedLeft={() => {
+                  if (sidebar) this.setSidebar(false);
+                }}
               >
                 <Sidebar
                   falters={edges.map(edge => edge.node.frontmatter)}
@@ -68,22 +74,29 @@ export default class TemplateWrapper extends Component {
               </Swipeable>
             </div>
             {/* eslint-disable-next-line */}
-            <div id="main-wrapper" onClick={() => { if (this.state.sidebar) this.setState({ sidebar: false }); }}>
-              <div
-                role="menu"
-                tabIndex="0"
-                id="sidebar-toggle"
-                onClick={() => this.setState({ sidebar: !this.state.sidebar })}
-                onKeyPress={(event) => {
-                  if (event.key.toLowerCase() === 'enter') this.setState({ sidebar: !this.state.sidebar });
+              <div id="main-wrapper"
+                onClick={() => {
+                  if (sidebar) this.setSidebar(false);
                 }}
-                onMouseDown={(e) => { e.preventDefault(); }}
               >
-                <FontAwesomeIcon icon={faBars} />
+                <div
+                  role="menu"
+                  tabIndex="0"
+                  id="sidebar-toggle"
+                  onClick={() => this.setSidebar(!sidebar)}
+                  onKeyPress={(event) => {
+                    if (event.key.toLowerCase() === 'enter') {
+                      this.setSidebar(!sidebar);
+                    }
+                  }}
+                  onMouseDown={(e) => { e.preventDefault(); }}
+                >
+                  <FontAwesomeIcon icon={faBars} />
+                </div>
+                <LayoutContext.Provider value={{ sidebar, setSidebar: this.setSidebar }}>
+                  {children}
+                </LayoutContext.Provider>
               </div>
-              {/* {children({ ...this.props, setSidebar: sidebar => this.setSidebar(sidebar) })} */}
-              {children}
-            </div>
           </div>
         </Fragment>
       );
