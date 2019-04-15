@@ -8,3 +8,5 @@ yarn-error.log
 
 # Windows stuff
 Thumbs.db
+# Mac stuff
+.DS_Store
