@@ -26,8 +26,8 @@ export default class Template extends Component {
       family, familyName, images, name, nameLatin,
     } = falter.frontmatter;
     const galleryImages = images.map((image) => {
-      const { src, srcSet, sizes } = image.src.childImageSharp.sizes;
-      const thumbnail = image.src.childImageSharp.resolutions.src;
+      const { src, srcSet, sizes } = image.src.childImageSharp.fluid;
+      const thumbnail = image.src.childImageSharp.fixed.src;
       return {
         original: src,
         thumbnail,
@@ -152,11 +152,11 @@ export const falterQuery = graphql`
         images {
           src {
             childImageSharp {
-              sizes(maxWidth: 4000) {
-                ...GatsbyImageSharpSizes
+              fluid(maxWidth: 4000) {
+                ...GatsbyImageSharpFluid
               }
-              resolutions(width: 200) {
-                ...GatsbyImageSharpResolutions
+              fixed(width: 200) {
+                ...GatsbyImageSharpFixed
               }
             }
           }

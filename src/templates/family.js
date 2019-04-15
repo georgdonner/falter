@@ -24,7 +24,7 @@ const Family = ({ data, location }) => {
             return (
               <div key={path} className="falter-card">
                 <Link to={path}>
-                  <Img sizes={images[0].src.childImageSharp.sizes} imgStyle={{ borderRadius: '2px 2px 0 0' }} />
+                  <Img fluid={images[0].src.childImageSharp.fluid} imgStyle={{ borderRadius: '2px 2px 0 0' }} />
                   <h2>{name}</h2>
                   <h3>
                     <i>{nameLatin}</i>
@@ -59,8 +59,8 @@ export const pageQuery = graphql`
             images {
               src {
                 childImageSharp {
-                  sizes(maxWidth: 600) {
-                    ...GatsbyImageSharpSizes
+                  fluid(maxWidth: 600) {
+                    ...GatsbyImageSharpFluid
                   }
                 }
               }
