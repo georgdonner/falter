@@ -46,7 +46,7 @@ export const pageQuery = graphql`
   query FamilyPage($family: String!) {
     allMarkdownRemark(
       limit: 2000
-      sort: { fields: [frontmatter___name], order: ASC }
+      sort: { fields: [frontmatter___nameLatin], order: ASC }
       filter: { frontmatter: { family: { eq: $family } } }
     ) {
       edges {
