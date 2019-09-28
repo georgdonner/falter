@@ -16,7 +16,7 @@
     "gatsby-plugin-offline": "^2.0.25",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sass": "^2.0.11",
-    "gatsby-plugin-sharp": "^2.0.34",
+    "gatsby-plugin-sharp": "2.2.12",
     "gatsby-remark-images": "^3.0.10",
     "gatsby-source-filesystem": "^2.0.29",
     "gatsby-transformer-remark": "^2.3.8",
@@ -37,6 +37,9 @@
     "develop": "gatsby develop",
     "lint": "eslint . --ignore-path .gitignore",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "resolutions": {
+    "sharp": "0.22.1"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
