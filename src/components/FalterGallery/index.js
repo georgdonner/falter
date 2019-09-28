@@ -1,10 +1,6 @@
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import faAngleLeft from '@fortawesome/fontawesome-free-solid/faAngleLeft';
-// import faAngleRight from '@fortawesome/fontawesome-free-solid/faAngleRight';
-// import faExpand from '@fortawesome/fontawesome-free-solid/faExpand';
-// import faCompress from '@fortawesome/fontawesome-free-solid/faCompress';
 import {
   faAngleLeft, faAngleRight, faExpand, faCompress,
 } from '@fortawesome/free-solid-svg-icons';
@@ -74,7 +70,10 @@ export default ({ images, onSlide }) => {
         disableThumbnailScroll
         showPlayButton={false}
         useBrowserFullscreen={false}
-        onSlide={currentImg => onSlide(currentImg)}
+        onSlide={(currentImg) => {
+          onSlide(currentImg);
+        }
+        }
         renderLeftNav={renderLeftNav}
         renderRightNav={renderRightNav}
         renderFullscreenButton={renderFullscreenButton}
