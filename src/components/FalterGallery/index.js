@@ -1,16 +1,19 @@
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faAngleLeft from '@fortawesome/fontawesome-free-solid/faAngleLeft';
-import faAngleRight from '@fortawesome/fontawesome-free-solid/faAngleRight';
-import faExpand from '@fortawesome/fontawesome-free-solid/faExpand';
-import faCompress from '@fortawesome/fontawesome-free-solid/faCompress';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import faAngleLeft from '@fortawesome/fontawesome-free-solid/faAngleLeft';
+// import faAngleRight from '@fortawesome/fontawesome-free-solid/faAngleRight';
+// import faExpand from '@fortawesome/fontawesome-free-solid/faExpand';
+// import faCompress from '@fortawesome/fontawesome-free-solid/faCompress';
+import {
+  faAngleLeft, faAngleRight, faExpand, faCompress,
+} from '@fortawesome/free-solid-svg-icons';
 import './index.scss';
 
-export default (props) => {
-  const galleryImages = props.images.map((image) => {
-    const { src, srcSet, sizes } = image.src.childImageSharp.sizes;
-    const thumbnail = image.src.childImageSharp.resolutions.src;
+export default ({ images, onSlide }) => {
+  const galleryImages = images.map((image) => {
+    const { src, srcSet, sizes } = image.src.childImageSharp.fluid;
+    const thumbnail = image.src.childImageSharp.fixed.src;
     return {
       original: src,
       thumbnail,
@@ -71,7 +74,7 @@ export default (props) => {
         disableThumbnailScroll
         showPlayButton={false}
         useBrowserFullscreen={false}
-        onSlide={currentImg => props.onSlide(currentImg)}
+        onSlide={currentImg => onSlide(currentImg)}
         renderLeftNav={renderLeftNav}
         renderRightNav={renderRightNav}
         renderFullscreenButton={renderFullscreenButton}
