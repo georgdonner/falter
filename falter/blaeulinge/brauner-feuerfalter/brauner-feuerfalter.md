@@ -7,7 +7,7 @@ familyName: Bläulinge
 familyLatin: Lycaenidae
 images:
   - { src: './brauner-feuerfalter.jpg', gender: 'f', location: 'Brandenburg, bei Dollgow', author: Georg, date: '2016-07-29' }
-  - { src: './brauner-feuerfalter2.jpg', gender: 'm', location: 'Brandenburg, bei Dollgow', author: Georg, date: '2016-07-30' }
+  - { src: './brauner-feuerfalter2.jpg', gender: 'm', location: 'Brandenburg, bei Dollgow', author: Karsten, date: '2016-07-30' }
   - { src: './brauner-feuerfalter3.jpg', gender: 'm', location: 'Brandenburg, bei Dollgow', author: Georg, date: '2016-07-30' }
   - { src: './brauner-feuerfalter4.jpg', gender: 'f', location: 'Brandenburg, bei Dollgow', author: Georg, date: '2016-07-29' }
 ---

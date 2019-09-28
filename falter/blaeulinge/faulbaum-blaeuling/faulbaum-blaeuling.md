@@ -7,7 +7,7 @@ familyName: Bläulinge
 familyLatin: Lycaenidae
 images:
   - { src: './faulbaum-blaeuling.jpg', gender: 'u', location: 'Brandenburg, bei Dollgow', author: Georg, date: '2016-07-02' }
-  - { src: './faulbaum-blaeuling2.jpg', gender: 'u', location: 'Brandenburg, bei Dollgow', author: Georg, date: '2016-07-02' }
+  - { src: './faulbaum-blaeuling2.jpg', gender: 'u', location: 'Brandenburg, bei Dollgow', author: Karsten, date: '2016-07-02' }
   - { src: './faulbaum-blaeuling3.jpg', gender: 'u', location: 'Brandenburg, Heinrichsfelde', author: Georg, date: '2016-06-05' }
 ---
 

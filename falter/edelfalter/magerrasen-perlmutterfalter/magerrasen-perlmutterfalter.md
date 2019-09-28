@@ -1,6 +1,6 @@
 ---
 path: '/edelfalter/magerrasen-perlmutterfalter'
-name: Magerrasen Perlmutterfalter
+name: Magerrasen-Perlmutterfalter
 nameLatin: Boloria dia
 family: edelfalter
 familyName: Edelfalter

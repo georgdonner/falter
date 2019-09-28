@@ -7,7 +7,7 @@ familyName: Edelfalter
 familyLatin: Nymphalidae
 images:
   - { src: './landkaertchen.jpg', gender: 'm', location: 'Sommerform - Sachsen, Spaargebirge', author: Georg, date: '2016-07-10' }
-  - { src: './landkaertchen2.jpg', gender: 'u', location: 'Frühlingsform - Brandenburg, Dunkelsee', author: Karsten, date: '2004-07-30' }
+  - { src: './landkaertchen2.jpg', gender: 'u', location: 'Frühlingsform - Brandenburg, Dunkelsee', author: Karsten, date: '2001-05-10' }
   - { src: './landkaertchen3.jpg', gender: 'm', location: 'Sommerform - Brandenburg, Dunkelsee', author: Georg, date: '2016-07-30' }
   - { src: './landkaertchen4.jpg', gender: 'm', location: 'Sommerform - Sachsen, Spaargebirge', author: Georg, date: '2016-07-10' }
 ---
