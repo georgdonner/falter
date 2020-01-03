@@ -28,11 +28,12 @@ export default class Template extends Component {
       let genderSymbol = '';
       if (gender === 'm') genderSymbol = '♂';
       if (gender === 'f') genderSymbol = '♀';
+      const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(imgData.location)}`;
       return (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
             {genderSymbol ? <span style={{ color: '#333', paddingRight: 10 }}>{genderSymbol}</span> : null}
-            {imgData.location}
+            <a href={mapsLink} target="_blank" rel="noopener noreferrer">{imgData.location}</a>
           </div>
           <div style={{ textAlign: 'right' }}>
             {date}

@@ -85,6 +85,18 @@
   }
 }
 
+.image-caption {
+  a {
+    color: $text-color;
+    text-decoration: none;
+    
+    &:hover {
+      color: $primary-color;
+      text-decoration: underline;
+    }
+  }
+}
+
 #description {
   a {
     color: $primary-color;
