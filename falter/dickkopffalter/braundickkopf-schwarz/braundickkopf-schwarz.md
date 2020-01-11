@@ -10,6 +10,7 @@ images:
   - { src: './braundickkopf-schwarz2.jpg', gender: 'u', location: 'Brandenburg, Heinrichsfelde', author: Georg, date: '2016-07-01' }
   - { src: './braundickkopf-schwarz3.jpg', gender: 'u', location: 'Sachsen, Spaargebirge', author: Georg, date: '2016-07-10' }
   - { src: './braundickkopf-schwarz4.jpg', gender: 'u', location: 'Brandenburg, Heinrichsfelde', author: Karsten, date: '2016-07-10' }
+flightSeason: '5-8'
 ---
 
 Der schwarzkolbige Braundickkopffalter unterscheidet sich nur ganz leicht vom braunkolbigen Exemplar, und zwar in den Innenseiten der Fühlerenden, daher auch die Namensgebung der beiden Falter. Hinzu kommt, dass die Bestimmung des Geschlechts sehr schwierig und nur beim ersten Foto anhand des „Duftflecks“ nach Hilfesuche in einem Forum möglich war. 
