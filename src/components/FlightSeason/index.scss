@@ -1,0 +1,35 @@
+@import '../../variables';
+
+#flight-season {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  width: 100%;
+  margin: 1.5rem 0;
+
+  & > div:first-child  .month {
+    border-left: 1px solid #eee;
+  }
+
+  .month {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 1rem;
+    border: 1px solid #eee;
+    border-left: none;
+
+    .active-season {
+      background: $primary-color;
+    }
+  }
+
+  .month-label {
+    font-size: .75rem;
+    text-align: center;
+    padding-top: .5rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    grid-template-columns: repeat(6, 1fr);
+    row-gap: 1rem;
+  }
+}

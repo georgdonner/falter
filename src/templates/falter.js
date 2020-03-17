@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './falter.scss';
 import FalterGallery from '../components/FalterGallery';
+import FlightSeason from '../components/FlightSeason';
 import Layout from '../components/layout';
 
 export default class Template extends Component {
@@ -20,7 +21,7 @@ export default class Template extends Component {
     const { currentImg } = this.state;
     const falter = data.markdownRemark;
     const {
-      family, familyName, images, name, nameLatin,
+      family, familyName, images, name, nameLatin, flightSeason,
     } = falter.frontmatter;
 
     const getCaption = (imgData) => {
@@ -63,6 +64,7 @@ export default class Template extends Component {
             <h2 id="subtitle">{nameLatin}</h2>
             <FalterGallery images={images} onSlide={curr => this.setState({ currentImg: curr })} />
             <div className="image-caption">{getCaption(images[currentImg])}</div>
+            <FlightSeason season={flightSeason} />
             <div id="description" className="body-text" dangerouslySetInnerHTML={{ __html: falter.html }} />
           </div>
         </Fragment>
@@ -81,6 +83,7 @@ export const falterQuery = graphql`
         nameLatin
         family
         familyName
+        flightSeason
         images {
           src {
             childImageSharp {
