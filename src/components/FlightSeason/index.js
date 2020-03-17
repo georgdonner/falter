@@ -15,19 +15,25 @@ const convertRange = (rangeStr) => {
   return range(convertMonthStr(start), convertMonthStr(end));
 };
 
-const convertSeason = season => season.split(',').flatMap(r => convertRange(r));
-
 export default ({ season }) => {
-  const monthValues = season ? convertSeason(season) : range(0, 35);
+  const seasons = season ? season.split(',').map(r => convertRange(r)) : [range(0, 35)];
+  const getGen = (monthVal) => {
+    for (let i = 0; i < seasons.length; i += 1) {
+      if (seasons[i].includes(monthVal)) {
+        return i + 1;
+      }
+    }
+    return 0;
+  };
 
   const monthScala = [...new Array(12)].map((_, i) => {
     const monthLabel = new Intl.DateTimeFormat('de-DE', { month: 'short' }).format(new Date(2020, i));
     return (
       <div key={monthLabel}>
         <div className="month">
-          <div className={monthValues.includes(i * 3) ? 'active-season' : ''} />
-          <div className={monthValues.includes(i * 3 + 1) ? 'active-season' : ''} />
-          <div className={monthValues.includes(i * 3 + 2) ? 'active-season' : ''} />
+          <div className={`gen-${getGen(i * 3)}`} />
+          <div className={`gen-${getGen(i * 3 + 1)}`} />
+          <div className={`gen-${getGen(i * 3 + 2)}`} />
         </div>
         <div className="month-label">{monthLabel}</div>
       </div>

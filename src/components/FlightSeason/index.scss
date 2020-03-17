@@ -17,8 +17,17 @@
     border: 1px solid #eee;
     border-left: none;
 
-    .active-season {
+    .gen-1 {
       background: $primary-color;
+    }
+    .gen-2{
+      background: darken($primary-color, 30%);
+    }
+    .gen-3 {
+      background: darken($primary-color, 60%);
+    }
+    .gen-4 {
+      background: darken($primary-color, 90%);
     }
   }
 
