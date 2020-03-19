@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import './index.scss';
 
-const Sidebar = (props) => {
-  const { falters } = props;
+export default ({ falters, path }) => {
   const saved = new Set();
   const links = [];
   falters.forEach((falter) => {
@@ -20,15 +21,21 @@ const Sidebar = (props) => {
           <h1>Familien</h1>
           <ul>
             {links.map(link => (
-              <li key={link.path} className={props.path.indexOf(link.path) !== -1 ? 'active' : ''}>
+              <li key={link.path} className={path.indexOf(link.path) !== -1 ? 'active' : ''}>
                 <Link to={link.path}>{link.title}</Link>
               </li>
             ))}
+            {path !== '/' ? (
+              <li id="search-link">
+                <Link to="/">
+                  <FontAwesomeIcon icon={faSearch} />
+                  Falter durchsuchen
+                </Link>
+              </li>
+            ) : null}
           </ul>
         </div>
       </div>
     </div>
   );
 };
-
-export default Sidebar;
