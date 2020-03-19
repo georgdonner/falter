@@ -20,13 +20,17 @@ const SearchResult = ({ result }) => (
 const IndexPage = ({ data, location }) => {
   const { index, store } = data.localSearchFalter;
   const [query, setQuery] = useState(new URLSearchParams(location.search).get('q') || '');
-  const [hideArticle, setHideArticle] = useState(false);
+  const [hideArticle, setHideArticle] = useState(Boolean(query) || Boolean(window.sessionStorage.getItem('hideArticle')));
   const results = useFlexSearch(query, index, JSON.parse(store));
 
   useEffect(() => {
     const newPath = query ? `/?q=${encodeURIComponent(query)}` : '/';
     navigate(newPath, { replace: true });
   }, [query]);
+
+  useEffect(() => {
+    window.sessionStorage.setItem('hideArticle', hideArticle);
+  }, [hideArticle]);
 
   return (
     <Layout location={location}>
