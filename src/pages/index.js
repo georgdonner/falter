@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useState } from 'react';
-import { graphql, Link } from 'gatsby';
+import React, { useEffect, useState } from 'react';
+import { graphql, Link, navigate } from 'gatsby';
 import { useFlexSearch } from 'react-use-flexsearch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -19,9 +19,14 @@ const SearchResult = ({ result }) => (
 
 const IndexPage = ({ data, location }) => {
   const { index, store } = data.localSearchFalter;
-  const [query, setQuery] = useState(null);
+  const [query, setQuery] = useState(new URLSearchParams(location.search).get('q') || '');
   const [hideArticle, setHideArticle] = useState(false);
   const results = useFlexSearch(query, index, JSON.parse(store));
+
+  useEffect(() => {
+    const newPath = query ? `/?q=${encodeURIComponent(query)}` : '/';
+    navigate(newPath, { replace: true });
+  }, [query]);
 
   return (
     <Layout location={location}>
@@ -55,7 +60,7 @@ const IndexPage = ({ data, location }) => {
             <div id="search-container">
               <FontAwesomeIcon icon={faSearch} />
               <input
-                type="search"
+                type="search" value={query}
                 placeholder="Suche nach Faltern..."
                 onChange={({ target }) => {
                   setQuery(target.value);
