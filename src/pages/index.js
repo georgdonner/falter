@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useLayoutEffect } from 'react';
 import { graphql, Link, navigate } from 'gatsby';
 import { useFlexSearch } from 'react-use-flexsearch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -20,17 +20,26 @@ const SearchResult = ({ result }) => (
 const IndexPage = ({ data, location }) => {
   const { index, store } = data.localSearchFalter;
   const [query, setQuery] = useState(new URLSearchParams(location.search).get('q') || '');
-  const [hideArticle, setHideArticle] = useState(Boolean(query) || Boolean(window.sessionStorage.getItem('hideArticle')));
+  const [hideArticle, setHideArticle] = useState(true);
   const results = useFlexSearch(query, index, JSON.parse(store));
+
+  useLayoutEffect(() => {
+    const hide = Boolean(window.sessionStorage.getItem('hideArticle')) || Boolean(query);
+    setHideArticle(hide);
+  }, []);
+
+  useEffect(() => {
+    if (hideArticle) {
+      window.sessionStorage.setItem('hideArticle', hideArticle);
+    } else {
+      window.sessionStorage.removeItem('hideArticle');
+    }
+  }, [hideArticle]);
 
   useEffect(() => {
     const newPath = query ? `/?q=${encodeURIComponent(query)}` : '/';
     navigate(newPath, { replace: true });
   }, [query]);
-
-  useEffect(() => {
-    window.sessionStorage.setItem('hideArticle', hideArticle);
-  }, [hideArticle]);
 
   return (
     <Layout location={location}>
