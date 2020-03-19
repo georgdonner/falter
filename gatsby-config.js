@@ -72,6 +72,35 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: 'gatsby-plugin-local-search',
+      options: {
+        name: 'falter',
+        engine: 'flexsearch',
+        query: `
+          {
+            allMarkdownRemark {
+              nodes {
+                id
+                frontmatter {
+                  path
+                  name
+                  nameLatin
+                  familyName
+                }
+              }
+            }
+          }
+        `,
+        index: ['name', 'nameLatin'],
+        normalizer: ({ data }) => (
+          data.allMarkdownRemark.nodes.map(node => ({
+            id: node.id,
+            ...node.frontmatter,
+          }))
+        ),
+      },
+    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-plugin-offline',

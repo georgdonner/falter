@@ -18,20 +18,36 @@
 }
 
 #main {
+  padding-top: 1.5rem;
+  font-size: 1.2rem;
+
   @media screen and (max-width: 1050px) {
     padding-right: .5rem;
     padding-left: .5rem;
+    padding-top: 4rem;
+    font-size: 1rem;
   }
 
   img {
     max-width: 100%;
   }
+  
+  article {
+    max-height: 5000px;
+    transition: all .25s ease;
+    overflow-y: hidden;
+
+    &.hidden {
+      max-height: 0;
+    }
+  }
 
   #index-title {
+    margin-top: 0;
     margin-bottom: 2rem;
+    font-size: 2rem;
     
     @media screen and (max-width: 1050px) {
-      margin-top: 4rem;
       margin-bottom: 1.5rem;
       font-size: 1.5rem;
     }
@@ -39,10 +55,16 @@
 
   p {
     line-height: 1.6;
-    font-size: 1.2rem;
+  }
 
-    @media screen and (max-width: 1050px) {
-      font-size: 1rem;
+  #mobile-cta {
+    margin: 0;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    
+    @media screen and (min-width: 1050px) {
+      display: none;
     }
   }
 
@@ -59,15 +81,62 @@
   }
 }
 
-#bottom-cta {
-  margin: 0;
-  margin-top: 1.5rem;
-  display: flex;
-  justify-content: center;
+input[type="search"] {
+  -webkit-appearance: textfield;
+}
 
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+#search-container {
+  display: flex;
+  align-items: center;;
+  width: 100%;
+  max-width: 800px;
+  border: #eee 2px solid;
+  border-radius: 5px;
+  padding-left: .75rem;
   
-  @media screen and (min-width: 1050px) {
-    display: none;
+  svg {
+    color: #aaa;
+  }
+
+  input {
+    flex-grow: 1;
+    border: none;
+    padding: .4rem .75rem;
+    font-size: 1.2rem;
+    line-height: 1.5;
+
+    @media screen and (max-width: 1050px) {
+      font-size: 1rem;
+    }
+  }
+}
+
+#search-results {
+  margin-top: 1.5rem;
+  @media screen and (max-width: 1050px) {
+    margin-top: .5rem;
+  }
+  .result {
+    display: block;
+    padding: 1rem 0;
+    text-decoration: none;
+    color: unset;
+    cursor: pointer;
+    @media screen and (max-width: 1050px) {
+      padding: .5rem 0;
+    }
+    p {
+      margin: 0;
+    }
+    .latin {
+      margin-top: .25rem;
+      color: $text-color-subdued;
+      font-size: .8em;
+    }
   }
 }
 
