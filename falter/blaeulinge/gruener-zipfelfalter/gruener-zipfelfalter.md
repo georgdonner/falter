@@ -7,7 +7,7 @@ familyName: Bläulinge
 familyLatin: Lycaenidae
 images:
   - { src: './gruener-zipfelfalter.jpg', gender: 'f', location: 'Brandenburg, Heinrichsfelde', author: Karsten, date: '2019-04-24' }
-  - { src: './gruener-zipfelfalter2.jpg', gender: 'u', location: 'Cornwall, Boscastle', author: Georg, date: '2016-06-17' }
+  - { src: './gruener-zipfelfalter2.jpg', gender: 'u', location: 'Cornwall, Boscastle', author: Georg, date: '2019-06-17' }
 flightSeason: '3-7'
 ---
 
