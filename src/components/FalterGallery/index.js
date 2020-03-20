@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ImageGallery from 'react-image-gallery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -6,7 +6,36 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import './index.scss';
 
-export default ({ images, onSlide }) => {
+const Caption = ({ image }) => {
+  const {
+    date, author, gender, location,
+  } = image;
+  let genderSymbol = '';
+  if (gender === 'm') genderSymbol = '♂';
+  if (gender === 'f') genderSymbol = '♀';
+  const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`;
+  return (
+    <div className="image-caption">
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div>
+          {genderSymbol ? <span style={{ color: '#333', paddingRight: 10 }}>{genderSymbol}</span> : null}
+          <a href={mapsLink} target="_blank" rel="noopener noreferrer">{location}</a>
+        </div>
+        <div style={{ textAlign: 'right' }}>
+          {date}
+          <i>
+            {` (Foto: ${author})`}
+          </i>
+        </div>
+      </div>
+
+    </div>
+  );
+};
+
+export default ({ images }) => {
+  const [currentImg, setCurrentImg] = useState(0);
+
   const galleryImages = images.map((image) => {
     const { src, srcSet, sizes } = image.src.childImageSharp.fluid;
     const thumbnail = image.src.childImageSharp.fixed.src;
@@ -63,21 +92,21 @@ export default ({ images, onSlide }) => {
   );
 
   return (
-    <div id="image-container">
-      <ImageGallery
-        items={galleryImages}
-        infinite={false}
-        disableThumbnailScroll
-        showPlayButton={false}
-        useBrowserFullscreen={false}
-        onSlide={(currentImg) => {
-          onSlide(currentImg);
-        }
-        }
-        renderLeftNav={renderLeftNav}
-        renderRightNav={renderRightNav}
-        renderFullscreenButton={renderFullscreenButton}
-      />
-    </div>
+    <>
+      <div id="image-container">
+        <ImageGallery
+          items={galleryImages}
+          infinite={false}
+          disableThumbnailScroll
+          showPlayButton={false}
+          useBrowserFullscreen={false}
+          onSlide={setCurrentImg}
+          renderLeftNav={renderLeftNav}
+          renderRightNav={renderRightNav}
+          renderFullscreenButton={renderFullscreenButton}
+        />
+      </div>
+      <Caption image={images[currentImg]} />
+    </>
   );
 };

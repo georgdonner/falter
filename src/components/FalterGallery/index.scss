@@ -115,11 +115,13 @@
 }
 
 .image-caption {
-  padding-top: 1rem;
-  color: $text-color-subdued;
-
-  @media screen and (max-width: 1050px) {
-    padding: .5rem 0;
-    font-size: .75rem;
+  a {
+    color: $text-color;
+    text-decoration: none;
+    
+    &:hover {
+      color: $primary-color;
+      text-decoration: underline;
+    }
   }
 }
