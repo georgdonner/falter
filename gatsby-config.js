@@ -87,12 +87,13 @@ module.exports = {
                   name
                   nameLatin
                   familyName
+                  alternativeNames
                 }
               }
             }
           }
         `,
-        index: ['name', 'nameLatin'],
+        index: ['name', 'nameLatin', 'alternativeNames'],
         normalizer: ({ data }) => (
           data.allMarkdownRemark.nodes.map(node => ({
             id: node.id,

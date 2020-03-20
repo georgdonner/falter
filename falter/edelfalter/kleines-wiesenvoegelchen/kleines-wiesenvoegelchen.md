@@ -5,6 +5,7 @@ nameLatin: Coenonympha pamphilus
 family: edelfalter
 familyName: Edelfalter
 familyLatin: Nymphalidae
+alternativeNames: [Kleiner Heufalter]
 images:
   - { src: './kleines-wiesenvoegelchen.jpg', gender: 'u', location: 'Brandenburg, bei Dollgow', author: Georg, date: '2016-05-14' }
 flightSeason: '2-11'

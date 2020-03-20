@@ -5,6 +5,7 @@ nameLatin: Aphantopus hyperantus
 family: edelfalter
 familyName: Edelfalter
 familyLatin: Nymphalidae
+alternativeNames: [Brauner Waldvogel]
 images:
   - { src: './schornsteinfeger.jpg', gender: 'f', location: 'Brandenburg, Heinrichsfelde', author: Georg, date: '2016-07-01' }
   - { src: './schornsteinfeger2.jpg', gender: 'f', location: 'Brandenburg, Heinrichsfelde', author: Georg, date: '2016-07-01' }

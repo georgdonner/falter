@@ -5,6 +5,7 @@ nameLatin: Callophrys rubi
 family: blaeulinge
 familyName: Bläulinge
 familyLatin: Lycaenidae
+alternativeNames: [Brombeer-Zipfelfalter]
 images:
   - { src: './gruener-zipfelfalter.jpg', gender: 'f', location: 'Brandenburg, Heinrichsfelde', author: Karsten, date: '2019-04-24' }
   - { src: './gruener-zipfelfalter2.jpg', gender: 'u', location: 'Cornwall, Boscastle', author: Georg, date: '2019-06-17' }

@@ -5,6 +5,7 @@ nameLatin: Colias hyale
 family: weisslinge
 familyName: Weißlinge
 familyLatin: Pieridae
+alternativeNames: [Posthörnchen]
 images:
   - { src: './goldene-acht.jpg', gender: 'm', location: 'Brandenburg, bei Grünhof', author: Georg, date: '2016-07-30' }
   - { src: './goldene-acht2.jpg', gender: 'u', location: '♂ oben, ♀ unten - Brandenburg, bei Grünhof', author: Georg, date: '2016-05-05' }
