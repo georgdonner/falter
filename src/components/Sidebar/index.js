@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
+import Github from '../../images/github.png';
 import './index.scss';
 
 export default ({ falters, path }) => {
@@ -35,6 +37,12 @@ export default ({ falters, path }) => {
             ) : null}
           </ul>
         </div>
+        <footer>
+          <a id="github-link" href="https://github.com/georgdonner/falter" target="_blank" rel="noopener noreferrer">
+            <span>Zum Code auf </span>
+            <img style={{ height: '1.5rem', width: '1.5rem', marginLeft: '.5rem' }} src={Github} alt="Github Logo" />
+          </a>
+        </footer>
       </div>
     </div>
   );

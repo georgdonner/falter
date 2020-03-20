@@ -5,7 +5,6 @@ import { useFlexSearch } from 'react-use-flexsearch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-import Github from '../images/github.png';
 import HeroImage from '../images/schwalbenschwanz.jpg';
 import Layout, { LayoutContext } from '../components/layout';
 import './index.scss';
@@ -91,12 +90,6 @@ const IndexPage = ({ data, location }) => {
                 }
               </div>
             ) : null}
-            <footer>
-              <a id="github-link" href="https://github.com/georgdonner/falter" target="_blank" rel="noopener noreferrer">
-                <span>Zum Code auf </span>
-                <img style={{ height: '1.5rem', width: '1.5rem', marginLeft: '.5rem' }} src={Github} alt="Github Logo" />
-              </a>
-            </footer>
           </main>
         )}
       </LayoutContext.Consumer>
