@@ -29,7 +29,7 @@ export default ({ falters, path }) => {
             ))}
             {path !== '/' ? (
               <li id="search-link">
-                <Link to="/" onClick={() => window.sessionStorage.setItem('hideArticle', true)}>
+                <Link to="/" state={{ search: true }}>
                   <FontAwesomeIcon icon={faSearch} />
                   Falter durchsuchen
                 </Link>

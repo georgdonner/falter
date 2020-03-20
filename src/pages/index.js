@@ -1,5 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useEffect, useState, useLayoutEffect } from 'react';
+import React, {
+  useEffect, useState, useLayoutEffect, useRef,
+} from 'react';
 import { graphql, Link, navigate } from 'gatsby';
 import { useFlexSearch } from 'react-use-flexsearch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -40,6 +42,15 @@ const IndexPage = ({ data, location }) => {
     navigate(newPath, { replace: true });
   }, [query]);
 
+  const inputEl = useRef(null);
+  useEffect(() => {
+    if (location.state && location.state.search) {
+      const { search } = location.state;
+      setHideArticle(search);
+      inputEl.current.focus();
+    }
+  }, []);
+
   return (
     <Layout location={location}>
       <LayoutContext.Consumer>
@@ -72,6 +83,7 @@ const IndexPage = ({ data, location }) => {
             <div id="search-container">
               <FontAwesomeIcon icon={faSearch} />
               <input
+                ref={inputEl}
                 type="search" value={query}
                 placeholder="Suche nach Faltern..."
                 onChange={({ target }) => {
