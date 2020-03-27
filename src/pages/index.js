@@ -13,7 +13,12 @@ import './index.scss';
 
 const SearchResult = ({ result }) => (
   <Link to={result.path} className="result">
-    <p>{result.name}</p>
+    <p>
+      {result.name}
+      {result.alternativeNames ? (
+        <span className="alternative">(auch {result.alternativeNames.join(', ')})</span>
+      ) : null}
+    </p>
     <p className="latin">{result.nameLatin}</p>
   </Link>
 );

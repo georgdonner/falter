@@ -132,6 +132,10 @@ input[type="search"]::-webkit-search-decoration {
     p {
       margin: 0;
     }
+    .alternative {
+      margin-left: .3rem;
+      font-size: .7em;
+    }
     .latin {
       margin-top: .25rem;
       color: $text-color-subdued;
