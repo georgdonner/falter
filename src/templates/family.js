@@ -14,7 +14,7 @@ const Family = ({ data, location }) => {
   return (
     <Layout location={location}>
       <Fragment>
-        <Helmet title={`Falter - ${familyName}`} />
+        <Helmet title={familyName} />
         <h1 id="family-title">{familyName}</h1>
         <FalterListing falters={falters} />
       </Fragment>

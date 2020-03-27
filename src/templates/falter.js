@@ -17,7 +17,7 @@ export default ({ data, location }) => {
   return (
     <Layout location={location}>
       <>
-        <Helmet title={`Falter - ${name}`} />
+        <Helmet title={name} />
         <div id="falter">
           <Link to={`/${family}`} id="back-button-falter">
             <FontAwesomeIcon icon={faArrowLeft} />
