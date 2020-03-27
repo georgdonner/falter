@@ -55,6 +55,7 @@ input[type="search"]::-webkit-search-decoration {
   border: #eee 2px solid;
   border-radius: 5px;
   padding-left: .75rem;
+  box-sizing: border-box;
   
   svg {
     color: #aaa;
