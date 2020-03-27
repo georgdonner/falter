@@ -53,6 +53,6 @@ export default class FlightSeason {
     if (date.getDate() >= 20) section = 2;
     else if (date.getDate() >= 10) section = 1;
     const monthVal = date.getMonth() * 3 + section;
-    return this.seasons.flat().includes(monthVal);
+    return [].concat(...this.seasons).includes(monthVal);
   }
 }
