@@ -15,8 +15,8 @@ body {
 
 @media screen and (min-width: 1200px) {
   html {
-      margin-left: calc(100vw - 100%);
-      margin-right: 0;
+    margin-left: calc(100vw - 100%);
+    margin-right: 0;
   }
 }
 
@@ -39,6 +39,36 @@ body {
 
   @media screen and (min-width: 1200px) {
     width: 900px;
+  }
+}
+
+#topbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 1rem 3rem;
+  text-align: center;
+  background: white;
+  z-index: 7;
+
+  @media screen and (min-width: 1050px) {
+    display: none;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 1.75rem;
+  }
+}
+
+main.content {
+  position: relative;
+  
+  @media screen and (max-width: 1050px) {
+    padding-top: 3rem;
+    padding-right: .5rem;
+    padding-left: .5rem;
   }
 }
 

@@ -1,5 +1,14 @@
 @import './variables';
 
+.page-title {
+  margin-bottom: 3rem;
+  text-align: center;
+
+  @media screen and (max-width: 1050px) {
+    display: none;
+  }
+}
+
 .primary-button {
   padding: .5rem 1rem;
   border: none;

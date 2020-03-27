@@ -40,7 +40,9 @@ const usePrevious = (value) => {
   return ref.current;
 };
 
-export default ({ location, children }) => {
+export default ({
+  topbar, location, children,
+}) => {
   const [sidebar, setSidebar] = useState(false);
 
   const prevLocation = usePrevious(location);
@@ -94,9 +96,16 @@ export default ({ location, children }) => {
               >
                 <FontAwesomeIcon icon={faBars} />
               </div>
-              <LayoutContext.Provider value={{ sidebar, setSidebar }}>
-                {children}
-              </LayoutContext.Provider>
+              <div id="topbar">
+                {typeof topbar === 'string' ? (
+                  <h1>{topbar}</h1>
+                ) : topbar}
+              </div>
+              <main className="content">
+                <LayoutContext.Provider value={{ sidebar, setSidebar }}>
+                  {children}
+                </LayoutContext.Provider>
+              </main>
             </div>
         </div>
       </>

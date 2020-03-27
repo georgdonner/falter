@@ -57,11 +57,10 @@ const IndexPage = ({ data, location }) => {
   }, []);
 
   return (
-    <Layout location={location}>
+    <Layout location={location} topbar="Falter">
       <LayoutContext.Consumer>
         {({ setSidebar }) => (
-          <main id="main">
-            <h1 id="index-topbar">Falter</h1>
+          <>
             <article className={hideArticle ? 'hidden' : ''}>
               <h1 id="index-title">Eine Sammlung der Tagfalter Europas</h1>
               <img src={HeroImage} alt="Tagfalter" />
@@ -107,7 +106,7 @@ const IndexPage = ({ data, location }) => {
                 }
               </div>
             ) : null}
-          </main>
+          </>
         )}
       </LayoutContext.Consumer>
     </Layout>

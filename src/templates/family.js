@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 
@@ -12,12 +12,12 @@ const Family = ({ data, location }) => {
   const falters = edges.map(({ node }) => node.frontmatter);
 
   return (
-    <Layout location={location}>
-      <Fragment>
+    <Layout location={location} topbar={familyName}>
+      <div id="family-page">
         <Helmet title={familyName} />
-        <h1 id="family-title">{familyName}</h1>
+        <h1 className="page-title">{familyName}</h1>
         <FalterListing falters={falters} />
-      </Fragment>
+      </div>
     </Layout>
   );
 };

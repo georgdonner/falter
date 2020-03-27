@@ -1,14 +1,6 @@
 @import 'node_modules/react-image-gallery/styles/scss/image-gallery.scss';
 @import '../variables';
 
-#falter {
-  position: relative;
-
-  @media screen and (max-width: 1050px) {
-    padding: 0 .5rem;
-  }
-}
-
 #back-button-falter {
   position: absolute;
   top: 0;
@@ -28,17 +20,9 @@
 }
 
 #falter-topbar {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  margin: 0;
   padding: 1.25rem 3rem;
   font-size: 1.25rem;
   text-align: center;
-  background: white;
-  z-index: 7;
-
   
   a {
     text-decoration: none;
@@ -53,11 +37,6 @@
       margin-right: .75rem;
     }
   }
-
-  
-  @media screen and (min-width: 1050px) {
-    display: none;
-  }
 }
 
 #title {
@@ -65,7 +44,6 @@
   text-align: center;
 
   @media screen and (max-width: 1050px) {
-    margin-top: 3rem;
     font-size: 1.75rem;
   }
 }

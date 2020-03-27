@@ -14,20 +14,23 @@ export default ({ data, location }) => {
     family, familyName, images, name, nameLatin, flightSeason,
   } = falter.frontmatter;
 
+  const topbar = (
+    <div id="falter-topbar">
+      <Link to={`/${family}`}>
+        <FontAwesomeIcon icon={faAngleLeft} />
+        {familyName}
+      </Link>
+    </div>
+  );
+
   return (
-    <Layout location={location}>
+    <Layout location={location} topbar={topbar}>
       <>
         <Helmet title={name} />
         <div id="falter">
           <Link to={`/${family}`} id="back-button-falter">
             <FontAwesomeIcon icon={faArrowLeft} />
           </Link>
-          <div id="falter-topbar">
-            <Link to={`/${family}`}>
-              <FontAwesomeIcon icon={faAngleLeft} />
-              {familyName}
-            </Link>
-          </div>
           <h1 id="title">{name}</h1>
           <h2 id="subtitle">{nameLatin}</h2>
           <FalterGallery images={images} />
