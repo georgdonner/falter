@@ -38,10 +38,7 @@ export default ({ falters, path }) => {
           </ul>
         </div>
         <footer>
-          <a id="github-link" href="https://github.com/georgdonner/falter" target="_blank" rel="noopener noreferrer">
-            <span>Zum Code auf </span>
-            <img style={{ height: '1.5rem', width: '1.5rem', marginLeft: '.5rem' }} src={Github} alt="Github Logo" />
-          </a>
+          <Link to="/wer-fliegt">Wer fliegt gerade?</Link>
         </footer>
       </div>
     </div>
